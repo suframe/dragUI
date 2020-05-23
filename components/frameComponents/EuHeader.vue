@@ -52,17 +52,18 @@
         data(){
             return {
                 options: [{
-                    value: 'page',
-                    label: '页面模式'
-                },{
                     value: 'component',
                     label: '组件模式'
+                },{
+                    value: 'page',
+                    label: '页面模式'
                 }],
             }
         },
         computed:{
             centerValue: {
                 set(val){
+
                     this.$store.commit('setPattern',{pattern: val})
                 },
                 get(){

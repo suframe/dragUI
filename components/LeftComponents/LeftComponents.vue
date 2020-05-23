@@ -1,7 +1,7 @@
 <template>
     <el-row>
         <el-col :span="24">
-            <el-collapse :value="['2','3','4']">
+            <el-collapse :value="['2','3']">
                 <el-collapse-item name="1">
                     <template slot="title">
                         <view style="width: 100%;text-align: center">
@@ -10,7 +10,7 @@
                     </template>
                     <left-compoents-by-layouts :layout="layout" :clone="cloneLayout" :choose="choosLayouts"></left-compoents-by-layouts>
                 </el-collapse-item>
-                <el-collapse-item name="2" disabled>
+                <el-collapse-item name="2">
                     <template slot="title">
                         <view style="width: 100%;text-align: center">
                             普通组件
@@ -32,51 +32,8 @@
                         </ComponentContainer>
                     </draggable>
                 </el-collapse-item>
-                <el-collapse-item name="4" disabled>
-                    <template slot="title">
-                        <view style="width: 100%;text-align: center">
-                            ColorUI组件
-                        </view>
-                    </template>
-                    <draggable :list="colorUiList"
-                               :clone="cloneComponent"
-                               :options="{
-                            sort:false
-                            }"
-                               :group="{ name: 'components', pull: 'clone', put: false}"
-                               @choose="choosComponents"
-                               class="components-class"
-                               style="position: relative;display: flex;justify-content: center;flex-wrap: wrap;">
-                        <ComponentContainer v-for="item in colorUiList"
-                                            :key="item.id"
-                                            :name="item.name"
-                                            :componentName="item.componentName">
-                        </ComponentContainer>
-                    </draggable>
-                </el-collapse-item>
-                <el-collapse-item name="4" disabled>
-                    <template slot="title">
-                        <view style="width: 100%;text-align: center">
-                            表单组件
-                        </view>
-                    </template>
-                    <draggable :list="formList"
-                               :clone="cloneComponent"
-                               :options="{
-                            sort:false
-                            }"
-                               :group="{ name: 'components', pull: 'clone', put: false}"
-                               @choose="choosComponents"
-                               class="components-class"
-                               style="position: relative;display: flex;justify-content: center;flex-wrap: wrap;">
-                        <ComponentContainer v-for="item in formList"
-                                            :key="item.id"
-                                            :name="item.name"
-                                            :componentName="item.componentName">
-                        </ComponentContainer>
-                    </draggable>
-                </el-collapse-item>
-                <el-collapse-item name="3" disabled>
+
+                <el-collapse-item name="3">
                     <template slot="title">
                         <view style="width: 100%;text-align: center">
                             我的组件
@@ -129,7 +86,7 @@
                           iStyle:{},
                           iClass: [],
                           itemList: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-12',
                       }]
                   },
                   {name:'布局 2:2',id: 1, componentName: 'Iflex',
@@ -138,12 +95,12 @@
                       num: [{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-6',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-6',
                           itemList: []
                       }]},
                   {name:'布局 3:3:3',id: 2, componentName: 'Iflex',
@@ -152,17 +109,17 @@
                       num: [{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-4',
                           itemList: []
                       },{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-4',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-4',
                           itemList: []
                       }]},
                   {name:'布局 1:1:1:1',id: 3, componentName: 'Iflex',
@@ -171,22 +128,22 @@
                       num: [{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-3',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-3',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-3',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-col-3',
                           itemList: []
                       }]},
                   {name:'布局 1:1:1:1:1',id: 4, componentName: 'Iflex',
@@ -195,27 +152,27 @@
                       num: [{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-flex-1',
                           itemList: []
                       },{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-flex-1',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-flex-1',
                           itemList: []
                       },{
                           iClass: [],
                           iStyle:{},
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-flex-1',
                           itemList: []
                       },{
                           iStyle:{},
                           iClass: [],
-                          layoutClass:'flex-sub',
+                          layoutClass:'tui-flex-1',
                           itemList: []
                       }]},
               ],

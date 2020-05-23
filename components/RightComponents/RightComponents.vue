@@ -34,12 +34,6 @@
                             <style-panel v-show="currentCompentenName !== ''" v-model="iStyle"></style-panel>
                         </el-form>
                 </el-tab-pane>
-                <el-tab-pane label="自定属性" name="second">
-                    <right-com-style-add ></right-com-style-add>
-                </el-tab-pane>
-                <el-tab-pane label="制定类" name="three">
-                    <right-com-class-add></right-com-class-add>
-                </el-tab-pane>
             </el-tabs>
 
         </el-col>
@@ -48,9 +42,7 @@
 
 <script>
     import {dIndex,arrIndex,borderList} from '@/common/js/styleExternalData'
-    import rightComStyleAdd from './rightComStyleAdd'
     import stylePanel from './styleCompentens/stylePanel'
-    import rightComClassAdd from './rightComClassAdd'
     import rightComCatalog from './rightComCatalog'
     import propsPanel from './styleCompentens/propsPanel'
 
@@ -134,9 +126,7 @@
             }
         },
         components:{
-            rightComStyleAdd,
             stylePanel,
-            rightComClassAdd,
             rightComCatalog,
             propsPanel
         }

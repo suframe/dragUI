@@ -1,0 +1,32 @@
+
+.jz-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.jz-item-2 {
+    width: 49%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 12px;
+}
+
+.jz-item-3 {
+    width: 33%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 12px;
+}
+
+.tui-group-name {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px 0;
+}

@@ -43,7 +43,7 @@
                                :clone="clone"
                                @choose="choose"
                                style="position: relative;width: 70%">
-                        <view class="flex" style="height: 35px;margin-bottom: 4px;" v-for="layoutCustomItem in layoutCustom">
+                        <view class="tui-flex" style="height: 35px;margin-bottom: 4px;" v-for="layoutCustomItem in layoutCustom">
                             <view class="content-layout-item" :class="item.layoutClass" v-for="(item,index) in layoutCustomItem.num" :key="index">{{flexHash[item.layoutClass]}}</view>
                         </view>
                     </draggable>
@@ -63,18 +63,18 @@
     import draggable from '@/common/js/vuedraggable'
 
     let flexMap = [
-        'flex-sub',
-        'flex-twice',
-        'flex-treble',
-        'flex-four',
-        'flex-five'
+        'tui-col-1',
+        'tui-col-3',
+        'tui-col-4',
+        'tui-col-6',
+        'tui-col-12',
     ]
     let flexHash = {
-        'flex-sub': 1,
-        'flex-twice': 2,
-        'flex-treble': 3,
-        'flex-four': 4,
-        'flex-five': 5
+        'tui-col-1': 1,
+        'tui-col-3': 2,
+        'tui-col-4': 3,
+        'tui-col-6': 4,
+        'tui-col-12': 5
     }
     let layoutGlobalId = 1000;
 

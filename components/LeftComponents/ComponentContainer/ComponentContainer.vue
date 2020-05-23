@@ -3,14 +3,12 @@
         <view style="position: absolute;left:0;top: 0;right: 0;bottom: 0;z-index: 10"
               @mouseover="onfocusTip" @mouseout="offfocusTip"  @mousedown="onmousedown"
         ></view>
-        <view  v-if="type === 'basics' && componentName.startsWith('I')" class="content">
-            <component :is="componentName" :name="name">{{name}}</component>
-        </view>
-        <view class="title" :class="[componentName.startsWith('I') ? '':'simple-component-name']" v-if="type === 'basics'">
+       
+        <view class="title simple-component-name" v-if="type === 'basics'">
             {{name}}
         </view>
         <view  v-if="type === 'layout'" >
-            <view class="flex content-layout">
+            <view class="tui-flex content-layout">
                 <view class="  margin-0 content-layout-item" v-for="(item,index) in num" :class="item.layoutClass">1</view>
             </view>
         </view>
@@ -109,7 +107,7 @@
         background-color: white;
         border: 2px solid #f7f9fa;
         border-top: none;
-        color: #cccccc;
+        color: #606266;
         line-height: 20px;
     }
 

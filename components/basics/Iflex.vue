@@ -1,57 +1,58 @@
 <template>
     <view>
-        <view class="flex-draggalbe-handle" v-if="showFlexDraggalbeHandle && preview">
-            <!-- 这里的:data-i-index="dataIIndex"用于右键删除-->
-            <view class="flex-draggalbe-handle-top"
-                  v-if="num.length > 1"
-                  :data-i-index="dataIIndex"
-                  @mousedown="choosLayouts(dataIIndex,$event)"></view>
-            <view class="flex-draggalbe-handle-bottom">
+        <view :style="phoneSize">
+            <view class="flex-draggalbe-handle" v-if="showFlexDraggalbeHandle && preview">
                 <!-- 这里的:data-i-index="dataIIndex"用于右键删除-->
-                <view :class="[handleItem.layoutClass,
-                        num.length > 1 ? 'flex-draggalbe-handle-bottom-item':'flex-draggalbe-handle-bottom-item-single']"
-                      v-for="(handleItem,handleIndex) in num"
-                      :data-i-index="dataIIndex + '-' +handleIndex"
-                      :key="handleIndex"
-                      @mousedown="choosLayouts(dataIIndex + '-' + handleIndex,$event)"
-                ></view>
+                <view class="flex-draggalbe-handle-top"
+                      v-if="num.length > 1"
+                      :data-i-index="dataIIndex"
+                      @mousedown="choosLayouts(dataIIndex,$event)"></view>
+                <view class="flex-draggalbe-handle-bottom">
+                    <!-- 这里的:data-i-index="dataIIndex"用于右键删除-->
+                    <view :class="[handleItem.layoutClass,
+                            num.length > 1 ? 'flex-draggalbe-handle-bottom-item':'flex-draggalbe-handle-bottom-item-single']"
+                          v-for="(handleItem,handleIndex) in num"
+                          :data-i-index="dataIIndex + '-' +handleIndex"
+                          :key="handleIndex"
+                          @mousedown="choosLayouts(dataIIndex + '-' + handleIndex,$event)"
+                    ></view>
+                </view>
             </view>
-        </view>
 
-        <!--这里的重复代码不好处理，因为是嵌套，老是报错-->
-        <template v-if="num.length === 1">
-            <!-- 这里的:data-i-index="dataIIndex"用于右键删除-->
-            <view class="margin-0 one-flex i-flex" style="position: relative"
-                  :class="[item.layoutClass]"
-                  v-for="(item,index0) in num"
-                  :data-i-index="dataIIndex + '-' +index0"
-                  :dataIIndex="dataIIndex + '-' +index0"
-            >
-                <draggable :group="iflexGroup" :list="item.itemList"
-                           :options="{
-                            }"
-                           @choose="choosComponents"
-                           @change="draggableChange"
-                           :class="[isIFlexClassBorder(num,index0)]"
-                           style="min-height:20px;"
-                           :style="[computedClassToStyle(item.iClass),computedStyleToStyle(item.iStyle)]"
+            <!--这里的重复代码不好处理，因为是嵌套，老是报错-->
+            <template v-if="num.length === 1">
+                <!-- 这里的:data-i-index="dataIIndex"用于右键删除-->
+                <view class="margin-0 one-flex i-flex" style="position: relative"
+                      :class="[item.layoutClass]"
+                      v-for="(item,index0) in num"
+                      :data-i-index="dataIIndex + '-' +index0"
+                      :dataIIndex="dataIIndex + '-' +index0"
                 >
-                    <template v-for="(item2,index) in item.itemList">
-                        <component :key="index" :is="item2.componentName"
-                                   :dataIIndex="dataIIndex + '-' + index0 + '-' +index"
-                                   :data-i-index="dataIIndex + '-' + index0 + '-' +index"
-                                   v-bind="item2"
-                                   :propsValue = "item2.componentName !== 'Iflex' ? item2.propsValue: undefined"
-                                   :style="item2.componentName !== 'Iflex'? [computedClassToStyle(item2.iClass),computedStyleToStyle(item2.iStyle)]:''"
-                        >
-                        </component>
-                    </template>
-                </draggable>
-            </view>
-        </template>
+                    <draggable :group="iflexGroup" :list="item.itemList"
+                               :options="{
+                                }"
+                               @choose="choosComponents"
+                               @change="draggableChange"
+                               :class="[isIFlexClassBorder(num,index0)]"
+                               style="min-height:20px;"
+                               :style="[computedClassToStyle(item.iClass),computedStyleToStyle(item.iStyle)]"
+                    >
+                        <template v-for="(item2,index) in item.itemList">
+                            <component :key="index" :is="item2.componentName"
+                                       :dataIIndex="dataIIndex + '-' + index0 + '-' +index"
+                                       :data-i-index="dataIIndex + '-' + index0 + '-' +index"
+                                       v-bind="item2"
+                                       :propsValue = "item2.componentName !== 'Iflex' ? item2.propsValue: undefined"
+                                       :style="item2.componentName !== 'Iflex'? [computedClassToStyle(item2.iClass),computedStyleToStyle(item2.iStyle)]:''"
+                            >
+                            </component>
+                        </template>
+                    </draggable>
+                </view>
+            </template>
 
-        <template v-else>
-            <view class="flex i-flex-r" style="position: relative"
+            <template v-else>
+            <view class="tui-flex i-flex-r" style="position: relative"
                   :style="[computedClassToStyle(iClass),computedStyleToStyle(iStyle)]"
                   :class="iClass"
                   :data-i-index="dataIIndex"
@@ -83,6 +84,7 @@
                 </view>
             </view>
         </template>
+        </view>
     </view>
 </template>
 
@@ -120,6 +122,14 @@
             }
         },
         methods:{
+            phoneSize(){
+                let rote = this.$store.state.phoneSize / 100
+                console.log(rote)
+                return {
+                    // zoom: rote,
+                    transform: `scale(${rote})`
+                }
+            },
             handresize(val){
                 let {width,height} = val
                 let widthPx = parseInt(width.replace('px',''))
@@ -148,6 +158,7 @@
                     return styleObje
                 }
                 let styleObjeStr = JSON.stringify(styleObje)
+                console.log(styleObjeStr)
                 let regx = /([0-9\.]+)(upx|rpx)/g
                 let newStr = styleObjeStr.replace(regx,(a,b,c,d)=>{
                     let bFloat = parseFloat(b)
